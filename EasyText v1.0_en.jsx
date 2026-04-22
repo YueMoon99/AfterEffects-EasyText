@@ -28,7 +28,6 @@
         return [((bigint >> 16) & 255) / 255, ((bigint >> 8) & 255) / 255, (bigint & 255) / 255];
     }
 
-    // --- UI Construction ---
     var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "EasyText", undefined, {resizeable: true});
     win.text = "EasyText v1.0 | 舟午YueMoon |";
     win.alignChildren = ["fill", "top"];
@@ -43,7 +42,6 @@
     var btnClearFav = topGrp.add("button", [0,0,105,30], "Clear Favorites");
     var btnGuide = topGrp.add("button", [0,0,90,30], "Guide");
 
-    // --- ListBox (10 Columns) ---
     var listBox = win.add("listbox", undefined, undefined, {
         numberOfColumns: 10,
         showHeaders: true,
@@ -54,7 +52,6 @@
     listBox.maximumSize.height = 180;
     listBox.preferredSize.width = 445; 
 
-    // Double-click to locate
     listBox.onDoubleClick = function() {
         var sel = listBox.selection;
         if (!sel) return;
@@ -70,7 +67,6 @@
         }
     };
 
-    // Delete protection
     listBox.addEventListener('keydown', function(event) {
         if (event.keyName === "Delete" || event.keyName === "Backspace") {
             var sel = listBox.selection;
@@ -90,7 +86,6 @@
         }
     });
 
-    // --- Property Editor ---
     var ctrlPnl = win.add("panel", undefined, "Property Editor");
     ctrlPnl.orientation = "column"; ctrlPnl.alignChildren = ["fill", "top"]; ctrlPnl.margins = 15;
     var labelW = 50; var inputW = 140; var btnW = 80;
