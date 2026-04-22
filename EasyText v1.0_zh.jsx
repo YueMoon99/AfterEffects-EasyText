@@ -28,7 +28,6 @@
         return [((bigint >> 16) & 255) / 255, ((bigint >> 8) & 255) / 255, (bigint & 255) / 255];
     }
 
-    // --- UI 构建 ---
     var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "EasyText", undefined, {resizeable: true});
     win.text = "EasyText v1.0 | 舟午YueMoon |";
     win.alignChildren = ["fill", "top"];
@@ -43,7 +42,6 @@
     var btnClearFav = topGrp.add("button", [0,0,105,30], "清空收藏字体");
     var btnGuide = topGrp.add("button", [0,0,90,30], "使用指南");
 
-    // --- 列表 (10列) ---
     var listBox = win.add("listbox", undefined, undefined, {
         numberOfColumns: 10,
         showHeaders: true,
@@ -54,7 +52,6 @@
     listBox.maximumSize.height = 180;
     listBox.preferredSize.width = 445; 
 
-    // 双击定位
     listBox.onDoubleClick = function() {
         var sel = listBox.selection;
         if (!sel) return;
@@ -70,7 +67,6 @@
         }
     };
 
-    // 删除保护
     listBox.addEventListener('keydown', function(event) {
         if (event.keyName === "Delete" || event.keyName === "Backspace") {
             var sel = listBox.selection;
